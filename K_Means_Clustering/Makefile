@@ -22,6 +22,7 @@ obj/data_handler.o : $(SRC)/data_handler.cc
 obj/data.o : $(SRC)/data.cc
 	$(CC) -fPIC $(CFLAGS) -o obj/data.o -I$(INCLUDE_DIR) -c $(SRC)/common.cc
 
+
 clean:
 	rm -r $(K_MEANS_Clustering_ROOT)/lib
 	rm -r $(K_MEANS_Clustering_ROOT)/obj
