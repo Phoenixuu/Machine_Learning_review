@@ -73,6 +73,7 @@ void data_handler::read_feature_labels(std::string path){
 			if(fread(element, sizeof(element), 1, f))
 			{
 				data_array->at(i)->set_label(element[0]);
+				// printf("%d\n", i);
 			} else 
 			{
 				printf("Error Reading from File.\n");
