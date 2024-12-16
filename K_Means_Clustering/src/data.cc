@@ -14,11 +14,11 @@ void data::set_feature_vector(std::vector<uint8_t> *vect)
 }
 void data::append_to_feature_vector(uint8_t val) 
 {
-	feature_vector = val;
+	feature_vector->push_back(val);
 }
 void data::set_label(uint8_t val) 
 {
-	feature_vector = val;
+	label = val;
 }
 void data::set_enumerated_label(int val)
 {
