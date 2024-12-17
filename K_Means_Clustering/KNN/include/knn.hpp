@@ -15,7 +15,7 @@ public:
 	void find_knearest(data *query_point);
 	void set_k(int val);
 	int predict();
-	double caculate_distance(data* query_point, data* input);
+	double calculate_distance(data* query_point, data* input);
 	double validate_performance();
 	double test_performance();
 };
