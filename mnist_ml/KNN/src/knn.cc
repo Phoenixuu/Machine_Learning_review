@@ -50,11 +50,11 @@ void knn::find_knearest(data *query_point){
 		{
 			for(int j = 0; j < training_data->size(); j++)
 			{
-				double distance = training_data->at(j)->get_distance();
+				double distance = calculate_distance(query_point, training_data->at(j));
 				if(distance > previous_min && distance < min)
 				{
 					min = distance;
-					index = k;
+					index = j;
 				}
 			}
 			neighbors->push_back(training_data->at(index));
@@ -102,12 +102,20 @@ double knn::calculate_distance(data* query_point, data* input)
 	double distance = 0.0;
 	if(query_point->get_feature_vector_size() != input->get_feature_vector_size())
 	{
-		printf("Error Vector Size Mismatch.\n");
+		printf("Error Vector Size Mistach.\n");
 		exit(1);
 	}
-	#ifndef EUCLID
+#ifdef EUCLID
 	for(unsigned i = 0; i < query_point->get_feature_vector_size(); i++)
 	{
-		
+		distance = pow(query_point->get_feature_vector()->at(i) - input-> get_feature_vecotr()->at(i), 2);
 	}
+	distance = sqrt(distance);
+#elif defined MANHANTTAN
+	// MANHATAN implement
+#endif
+return distance;
 }
+
+double knn::validate_performance();
+double knn::test_performance();
