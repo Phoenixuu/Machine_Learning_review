@@ -185,4 +185,6 @@ int main()
 			}
 		}
 	}
+	knearest->set_k(best_k);
+	knearest->test_performance();
 }
