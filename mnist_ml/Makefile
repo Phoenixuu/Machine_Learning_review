@@ -1,4 +1,5 @@
 CC=g++
+MNIST_ML_ROOT := $(shell pwd)
 INCLUDE_DIR := $(MNIST_ML_ROOT)/include
 SRC := $(MNIST_ML_ROOT)/src
 CFLAGS := -shared -std=c++11 -g
@@ -17,12 +18,12 @@ objdir:
 	mkdir -p $(MNIST_ML_ROOT)/obj
 
 obj/data_handler.o : $(SRC)/data_handler.cc
-	$(CC) -fPIC $(CFLAGS) -o obj/data_dandler.o -I$(INCLUDE_DIR) -c $(SRC)/data_dandler.cc
+	$(CC) -fPIC $(CFLAGS) -o obj/data_handler.o -I$(INCLUDE_DIR) -c $(SRC)/data_handler.cc
 
 obj/data.o : $(SRC)/data.cc
 	$(CC) -fPIC $(CFLAGS) -o obj/data.o -I$(INCLUDE_DIR) -c $(SRC)/common.cc
 
 
 clean:
-	rm -r $(MNIST_ML_ROOT)/lib
-	rm -r $(MNIST_ML_ROOT)/obj
+	rm -rf $(MNIST_ML_ROOT)/lib
+	rm -rf $(MNIST_ML_ROOT)/obj
