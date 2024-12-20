@@ -1,7 +1,7 @@
 #ifndef __KNN_H
 #define __KNN_H
 
-#include "common.hpp"
+#include "/home/dunggps/Code_like_a_dog/Machine_Learning_review/mnist_ml/include/common.hpp"
 
 class knn : public common_data
 {

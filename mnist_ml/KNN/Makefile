@@ -1,5 +1,5 @@
 CC=g++
-SRC := $(MNIST_ML_ROOT)/KNN/src
+SRC := $(PWD)/src
 CFLAGS := -std=c++11 -DEUCLID
 INCLUDE_DIR := $(PWD)/include/*
 

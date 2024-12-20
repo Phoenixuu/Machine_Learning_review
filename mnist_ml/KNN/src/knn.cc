@@ -3,7 +3,7 @@
 #include <limits>
 #include <map>
 #include "stdint.h"
-#include "data_handler.hpp"
+#include "/home/dunggps/Code_like_a_dog/Machine_Learning_review/mnist_ml/include/data_handler.hpp"
 
 knn::knn(int val) 
 {
@@ -87,6 +87,7 @@ int knn::predict()
 	int max = 0;
 	for(auto kv : class_freq) 
 	{
+		printf("%d -> %d\n", kv.first, kv.second);
 		if(kv.second > max)
 		{
 			max = kv.second;
@@ -108,13 +109,15 @@ double knn::calculate_distance(data* query_point, data* input)
 #ifdef EUCLID
 	for(unsigned i = 0; i < query_point->get_feature_vector_size(); i++)
 	{
-		distance = pow(query_point->get_feature_vector()->at(i) - input-> get_feature_vecotr()->at(i), 2);
+		distance = pow(query_point->get_feature_vector()->at(i) - input-> get_feature_vector()->at(i), 2);
 	}
 	distance = sqrt(distance);
+	printf("%f\n", distance);
+	return distance;
 #elif defined MANHANTTAN
 	// MANHATAN implement
 #endif
-return distance;
+
 }
 
 double knn::validate_performance()
@@ -126,6 +129,7 @@ double knn::validate_performance()
 	{
 		find_knearest(query_point);
 		int prediction = predict();
+		printf("%d -> %d \n",prediction, query_point->get_label());
 		if(prediction == query_point-> get_label())
 		{
 			count++;
