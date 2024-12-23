@@ -26,6 +26,7 @@ obj/data.o : $(SRC)/data.cc
 obj/common.o : $(SRC)/common.cc
 	$(CC) -fPIC $(CFLAGS) -o obj/common.o - I$(INCLUDE_DIR) -c $(SRC)/common.cc
 
+
 clean:
 	rm -rf $(MNIST_ML_ROOT)/lib
 	rm -rf $(MNIST_ML_ROOT)/obj
