@@ -21,8 +21,10 @@ obj/data_handler.o : $(SRC)/data_handler.cc
 	$(CC) -fPIC $(CFLAGS) -o obj/data_handler.o -I$(INCLUDE_DIR) -c $(SRC)/data_handler.cc
 
 obj/data.o : $(SRC)/data.cc
-	$(CC) -fPIC $(CFLAGS) -o obj/data.o -I$(INCLUDE_DIR) -c $(SRC)/common.cc
+	$(CC) -fPIC $(CFLAGS) -o obj/data.o -I$(INCLUDE_DIR) -c $(SRC)/data.cc
 
+obj/common.o : $(SRC)/common.cc
+	$(CC) -fPIC $(CFLAGS) -o obj/common.o - I$(INCLUDE_DIR) -c $(SRC)/common.cc
 
 clean:
 	rm -rf $(MNIST_ML_ROOT)/lib
