@@ -38,16 +38,17 @@ typedef struct cluster
             double value = centroid->at(i);
             value *= previous_size;
             value += point->get_feature_vector()->at(i);
-            val /= (double)cluster_points->size();
-            centroid->at(i) = val;
+            value /= (double)cluster_points->size();
+            centroid->at(i) = value;
         }
-        if(class_counts->find(point->get_label()) == class_counts->end())
+        if(class_counts.find(point->get_label()) == class_counts.end())
         {
             class_counts[point->get_label()] = 1;
         } else 
         {
-            class_counts[point->get_label]++;
-        }        
+            class_counts[point->get_label()]++;
+        }
+        set_most_frequenct_class();
     }
 
     void set_most_frequenct_class()
@@ -69,7 +70,7 @@ typedef struct cluster
 class kmeans : common_data
 {
     int num_cluster;
-    std::vector<cluster_t *> *cluster;
+    std::vector<cluster_t *> *clusters;
     std::unordered_set<int> *used_indexes;
     public:
     kmeans(int k);
@@ -79,6 +80,6 @@ class kmeans : common_data
     double euclidean_distance(std::vector<double> *, data *);
     double validate();
     double test();
-}
+};
 
 #endif
