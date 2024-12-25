@@ -12,6 +12,39 @@ data_handler::~data_handler()
 
 }
 
+void data_handler::read_csv(std::string path, std::string delimiter)
+{
+	num_classes = 0;
+	std::ifstream data_file(path.c_str());
+	std::string line; // holds each line
+	while(std::getline(data_file, line))
+	{
+		if(line.length() == 0) continue;
+		data *d = new data();
+		d->set_feature_vector(new std::vector<double>());
+		size_t position = 0;
+		std::string token; // value in between delimter
+		while((position = line.find(delimiter)) != std::string::npos)
+		{
+			token = line.substr(0, position);
+			d->append_to_feature_vector(std::stod(token));
+			line.erase(0, position + delimiter.length());
+		}
+		if(classMap.find(line) != classMap.end())
+		{
+			d->set_label(classMap[line]);
+		} else
+		{
+			classMap[line] = num_classes;
+			d->set_label(classMap[line]);
+			num_classes++;
+		}
+		data_array->push_back(d);
+	}
+	feature_vector_size = data_array->at(0)->get_double_feature_vector()->size();
+}
+
+
 void data_handler::read_feature_vector(std::string path)
 {
 	uint32_t header[4]; // |MAGIC|NUM IMAGES|ROWSIZE|COLSIZE
@@ -152,6 +185,8 @@ void data_handler::count_classes(){
 		}
 	}
 	num_classes = count;
+	for(data *data: *data_array)
+		data->set_class_vector(num_classes);
 	printf("Successfully Extracted %d Unique Classes\n", num_classes);
 }
 
