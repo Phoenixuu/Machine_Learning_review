@@ -1,4 +1,4 @@
-#include "data_handler.hpp"
+#include "/home/dunggps/Code_like_a_dog/Machine_Learning_review/mnist_ml/include/data_handler.hpp"
 
 data_handler::data_handler(){
 	data_array = new std::vector<data *>;
